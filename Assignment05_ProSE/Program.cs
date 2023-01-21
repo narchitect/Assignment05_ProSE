@@ -6,13 +6,13 @@ namespace Assignment05_ProSE
     {
         static void Main()
         {
-            string path = "C:\\Users\\Anwender\\Documents\\GitHub\\Assignment05_ProSE\\sampleImages\\image1.jpg";
+            string path = "C:\\Users\\Anwender\\Documents\\GitHub\\Assignment05_ProSE\\sampleImages\\image3.jpg";
             Bitmap originalImage = new Bitmap(path);
 
             SoebelFilter image1 = new SoebelFilter();
             Bitmap newImage = image1.GetBoundary(originalImage);
 
-            string newPath = "C:\\Users\\Anwender\\Documents\\GitHub\\Assignment05_ProSE\\sampleImages\\image1-result.jpg";
+            string newPath = "C:\\Users\\Anwender\\Documents\\GitHub\\Assignment05_ProSE\\sampleImages\\image3-result.jpg";
             newImage.Save(newPath);
         }
     }
