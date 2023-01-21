@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "o469YVgRVt0lF7va8DFptdTXI5ALf2l1u9REn/k6ykvcXFwW9qm74ckQY+a7P1rhIiNocc2BTNiSFAc3XYsqug==",
+  "dgSpecHash": "1yNqGXJvlRTb4umAENlCMy6cuVtf7A7hCjsTTxDtzw3HvkBSMRlVnUsi1LQl3wtWpkcP20+3rzQ9w3zkXGbQRw==",
   "success": true,
   "projectFilePath": "/Users/kimnayun/Projects/Assignment05_ProSE/Assignment05_ProSE/Assignment05_ProSE.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/kimnayun/.nuget/packages/microsoft.win32.systemevents/7.0.0/microsoft.win32.systemevents.7.0.0.nupkg.sha512",
+    "/Users/kimnayun/.nuget/packages/system.drawing.common/7.0.0/system.drawing.common.7.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

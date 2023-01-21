@@ -1,4 +1,24 @@
 ﻿<Properties StartupConfiguration="{637D8843-C5EA-4243-A1F6-10A307E4F2CE}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SoebelFilter.cs">
+    <Files>
+      <File FileName="Program.cs" Line="2" Column="6" />
+      <File FileName="SoebelFilter.cs" Line="5" Column="2" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Assignment05_ProSE" expanded="True">
+            <Node name="Assignment05_ProSE" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Assignment05__ProSE FirstBuild="True" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Assignment05__ProSE PreferredExecutionTarget="MonoDevelop.Default" FirstBuild="True" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
