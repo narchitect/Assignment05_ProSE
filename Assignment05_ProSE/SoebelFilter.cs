@@ -68,14 +68,67 @@ namespace Assignment05_ProSE
                         res.SetPixel(x, y, Color.Black);
                     }
 
+
                 }
                
             }
-            Threshold = Sum/(originalImg.Width*originalImg.Height);
-            Console.WriteLine(originalImg.Width);
-            Console.WriteLine(originalImg.Height);
-            Console.WriteLine(Sum);
-            Console.WriteLine(Threshold);
+
+            for (int x = 1; x < originalImg.Width - 1; x++)
+            {
+                for (int y = 1; y < originalImg.Height - 1; y++)
+                {
+                    int gradiantX_G = (originalImg.GetPixel(x - 1, y).G - originalImg.GetPixel(x + 1, y).G)/2;
+
+                    int gradiantY_G = (originalImg.GetPixel(x, y - 1).G - originalImg.GetPixel(x, y + 1).G)/2;
+
+                    double Magnitude_G = Math.Sqrt((gradiantX_G * gradiantX_G) + (gradiantY_G * gradiantY_G));
+                    
+                    Sum += Magnitude_G;
+
+                    if (Magnitude_G > 2.1)
+                    {
+                        res.SetPixel(x, y, originalImg.GetPixel(x, y));
+                    }
+                    else
+                    {
+                        res.SetPixel(x, y, Color.Black);
+                    }
+
+
+                }
+
+            }
+
+            for (int x = 1; x < originalImg.Width - 1; x++)
+            {
+                for (int y = 1; y < originalImg.Height - 1; y++)
+                {
+                    int gradiantX_B = (originalImg.GetPixel(x - 1, y).B - originalImg.GetPixel(x + 1, y).B) / 2;
+
+                    int gradiantY_B = (originalImg.GetPixel(x, y - 1).G - originalImg.GetPixel(x, y + 1).B) / 2;
+
+                    double Magnitude_B = Math.Sqrt((gradiantX_B * gradiantX_B) + (gradiantY_B * gradiantY_B));
+
+                    Sum += Magnitude_B;
+
+                    if (Magnitude_B > 2.1)
+                    {
+                        res.SetPixel(x, y, originalImg.GetPixel(x, y));
+                    }
+                    else
+                    {
+                        res.SetPixel(x, y, Color.Black);
+                    }
+
+
+                }
+
+            }
+            //Threshold = Sum/(originalImg.Width*originalImg.Height);
+            //Console.WriteLine(originalImg.Width);
+            //Console.WriteLine(originalImg.Height);
+            //Console.WriteLine(Sum);
+            //Console.WriteLine(Threshold);
             return res;
         }
 
