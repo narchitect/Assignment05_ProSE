@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Z8t8jJJ9MTOVMWVAv/Q5SKlJLqiKUOPA2BYfY50qr5Zo9Mx2mVsJ3jFb6rx+0tCCq4j/5V9Nv7wXtP63n61VnQ==",
+  "dgSpecHash": "WoZZqR50h6T+Y9U8XhgtMWXRPSP9M86U/NHOak6A3pg9gsS3Qlzwnz7js6Ein8LO+5pUs2huaiIRauQn2AprTg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Tamira Wrabel\\Documents\\GitHub\\Assignment05_ProSE-ta\\Assignment05_ProSE\\Assignment05_ProSE.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Tamira Wrabel\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
+    "C:\\Users\\Tamira Wrabel\\.nuget\\packages\\system.drawing.common\\7.0.0\\system.drawing.common.7.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

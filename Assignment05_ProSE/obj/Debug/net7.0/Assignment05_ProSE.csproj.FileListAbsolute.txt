@@ -1,0 +1,5 @@
+C:\Users\Tamira Wrabel\Documents\GitHub\Assignment05_ProSE-ta\Assignment05_ProSE\obj\Debug\net7.0\Assignment05_ProSE.csproj.AssemblyReference.cache
+C:\Users\Tamira Wrabel\Documents\GitHub\Assignment05_ProSE-ta\Assignment05_ProSE\obj\Debug\net7.0\Assignment05_ProSE.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tamira Wrabel\Documents\GitHub\Assignment05_ProSE-ta\Assignment05_ProSE\obj\Debug\net7.0\Assignment05_ProSE.AssemblyInfoInputs.cache
+C:\Users\Tamira Wrabel\Documents\GitHub\Assignment05_ProSE-ta\Assignment05_ProSE\obj\Debug\net7.0\Assignment05_ProSE.AssemblyInfo.cs
+C:\Users\Tamira Wrabel\Documents\GitHub\Assignment05_ProSE-ta\Assignment05_ProSE\obj\Debug\net7.0\Assignment05_ProSE.csproj.CoreCompileInputs.cache
