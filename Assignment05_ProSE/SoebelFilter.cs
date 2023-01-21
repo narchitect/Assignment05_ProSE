@@ -6,7 +6,7 @@ namespace Assignment05_ProSE
     public class SoebelFilter
     {
         double Sum;
-        double Threshold;
+        double Threshold = 30;
         private int[][] SoebelX = {
                           new int[] {-1, 0, 1},
                           new int[] {-2, 0, 2},
@@ -59,16 +59,17 @@ namespace Assignment05_ProSE
                     //double Magnitude_B = Math.Sqrt((gradiantX_B * gradiantX_B) + (gradiantY_B * gradiantY_B));
                     Sum += Magnitude_R;
 
-                    if (Magnitude_R > 2.1)
+                    if(res.GetPixel(x,y) != Color.Black)
                     {
-                        res.SetPixel(x, y, originalImg.GetPixel(x, y));
+                        if (Magnitude_R > Threshold)
+                        {
+                            res.SetPixel(x, y, originalImg.GetPixel(x, y));
+                        }
+                        else
+                        {
+                            res.SetPixel(x, y, Color.Black);
+                        }
                     }
-                    else
-                    {
-                        res.SetPixel(x, y, Color.Black);
-                    }
-
-
                 }
                
             }
@@ -85,16 +86,17 @@ namespace Assignment05_ProSE
                     
                     Sum += Magnitude_G;
 
-                    if (Magnitude_G > 2.1)
+                    if (res.GetPixel(x, y) != Color.Black)
                     {
-                        res.SetPixel(x, y, originalImg.GetPixel(x, y));
+                        if (Magnitude_G > Threshold)
+                        {
+                            res.SetPixel(x, y, originalImg.GetPixel(x, y));
+                        }
+                        else
+                        {
+                            res.SetPixel(x, y, Color.Black);
+                        }
                     }
-                    else
-                    {
-                        res.SetPixel(x, y, Color.Black);
-                    }
-
-
                 }
 
             }
@@ -111,16 +113,18 @@ namespace Assignment05_ProSE
 
                     Sum += Magnitude_B;
 
-                    if (Magnitude_B > 2.1)
-                    {
-                        res.SetPixel(x, y, originalImg.GetPixel(x, y));
-                    }
-                    else
-                    {
-                        res.SetPixel(x, y, Color.Black);
-                    }
 
-
+                    if (res.GetPixel(x, y) != Color.Black)
+                    {
+                        if (Magnitude_B > Threshold)
+                        {
+                            res.SetPixel(x, y, originalImg.GetPixel(x, y));
+                        }
+                        else
+                        {
+                            res.SetPixel(x, y, Color.Black);
+                        }
+                    }
                 }
 
             }
