@@ -5,7 +5,9 @@ namespace Assignment05_ProSE
 {
     public class SoebelFilter
     {
-        double Sum;
+        static Bitmap Result;
+        static Color OriginalImgColor;
+        
         double Threshold = 30;
         private int[][] SoebelX = {
                           new int[] {-1, 0, 1},
@@ -19,12 +21,13 @@ namespace Assignment05_ProSE
 
         public Bitmap GetBoundary(Bitmap originalImg)
         {
-            Bitmap res = new Bitmap(originalImg.Width, originalImg.Height);
+            Result = new Bitmap(originalImg.Width, originalImg.Height);
            
             for (int x = 1; x < originalImg.Width - 1; x++)
             {
                 for (int y = 1; y < originalImg.Height - 1; y++)
                 {
+                    
                     int gradiantX_R = (originalImg.GetPixel(x - 1, y).R - originalImg.GetPixel(x + 1, y).R)/2;
                     //int gradiantX_G = (originalImg.GetPixel(x - 1, y).G - originalImg.GetPixel(x + 1, y).G)/2;
                     //int gradiantX_B = (originalImg.GetPixel(x - 1, y).B - originalImg.GetPixel(x + 1, y).B)/2;
@@ -57,21 +60,11 @@ namespace Assignment05_ProSE
                     double Magnitude_R = Math.Sqrt((gradiantX_R * gradiantX_R) + (gradiantY_R * gradiantY_R));
                     //double Magnitude_G = Math.Sqrt((gradiantX_G * gradiantX_G) + (gradiantY_G * gradiantY_G));
                     //double Magnitude_B = Math.Sqrt((gradiantX_B * gradiantX_B) + (gradiantY_B * gradiantY_B));
-                    Sum += Magnitude_R;
 
-                    if(res.GetPixel(x,y) != Color.Black)
-                    {
-                        if (Magnitude_R > Threshold)
-                        {
-                            res.SetPixel(x, y, originalImg.GetPixel(x, y));
-                        }
-                        else
-                        {
-                            res.SetPixel(x, y, Color.Black);
-                        }
-                    }
+                    OriginalImgColor = originalImg.GetPixel(x, y);
+                    CheckPixelsMagnitude(Magnitude_R, x, y);
                 }
-               
+
             }
 
             for (int x = 1; x < originalImg.Width - 1; x++)
@@ -84,19 +77,9 @@ namespace Assignment05_ProSE
 
                     double Magnitude_G = Math.Sqrt((gradiantX_G * gradiantX_G) + (gradiantY_G * gradiantY_G));
                     
-                    Sum += Magnitude_G;
+                    OriginalImgColor = originalImg.GetPixel(x, y);
+                    CheckPixelsMagnitude(Magnitude_G, x, y);
 
-                    if (res.GetPixel(x, y) != Color.Black)
-                    {
-                        if (Magnitude_G > Threshold)
-                        {
-                            res.SetPixel(x, y, originalImg.GetPixel(x, y));
-                        }
-                        else
-                        {
-                            res.SetPixel(x, y, Color.Black);
-                        }
-                    }
                 }
 
             }
@@ -111,20 +94,8 @@ namespace Assignment05_ProSE
 
                     double Magnitude_B = Math.Sqrt((gradiantX_B * gradiantX_B) + (gradiantY_B * gradiantY_B));
 
-                    Sum += Magnitude_B;
-
-
-                    if (res.GetPixel(x, y) != Color.Black)
-                    {
-                        if (Magnitude_B > Threshold)
-                        {
-                            res.SetPixel(x, y, originalImg.GetPixel(x, y));
-                        }
-                        else
-                        {
-                            res.SetPixel(x, y, Color.Black);
-                        }
-                    }
+                    OriginalImgColor = originalImg.GetPixel(x, y);
+                    CheckPixelsMagnitude(Magnitude_B, x, y);
                 }
 
             }
@@ -133,9 +104,23 @@ namespace Assignment05_ProSE
             //Console.WriteLine(originalImg.Height);
             //Console.WriteLine(Sum);
             //Console.WriteLine(Threshold);
-            return res;
+            return Result;
         }
 
+        private void CheckPixelsMagnitude(double magnitude, int x, int y )
+        {
+            if (Result.GetPixel(x, y) != Color.Black)
+            {
+                if (magnitude > Threshold)
+                {
+                    Result.SetPixel(x, y, OriginalImgColor);
+                }
+                else
+                {
+                    Result.SetPixel(x, y, Color.Black);
+                }
+            }
+        }
     }
 }
 
