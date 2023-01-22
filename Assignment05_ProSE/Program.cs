@@ -4,12 +4,9 @@ using System.IO;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Assignment05_ProSE
-{
-    
+{    
     public class MainClass
-    {
-
-                
+    {                       
         public static void Main(string[] argArray)
         {
             string pathImage1 = "D:\\001_ITBE-Master\\ProSE\\Assignment-5\\Assignment-5-21-01-2023\\ImagesAssignment5\\image1.jpg";
@@ -31,8 +28,12 @@ namespace Assignment05_ProSE
 
             foreach ( var image in images)
             {
+                //SoebelFilter image1 = new SoebelFilter();
+                
                 var imageContainer = new ImageContainer(image);
-                var imagesThread = new Thread(imageContainer.ProcessImage);
+                //var imagesThread = new Thread(new ParameterizedThreadStart(image1.GetBoundary(image));
+                var imagesThread = new Thread(new ThreadStart(imageContainer.ProcessImage));
+                
                 imagesThreads.Add(imagesThread);
                 imagesThread.Start();
             }

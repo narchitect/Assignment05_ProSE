@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
+using static System.Net.Mime.MediaTypeNames;
 
 
 namespace Assignment05_ProSE
@@ -25,15 +26,21 @@ namespace Assignment05_ProSE
         }
         public void ProcessImage()
         {
-            while (true)
-            {
-                Monitor.Enter(this);
-                 
-                SoebelFilter image1 = new SoebelFilter();
-                Bitmap newImage = image1.GetBoundary(originalImage);
+            
+            SoebelFilter filter = new SoebelFilter();
+            newImage = filter.GetBoundary(originalImage);
+            
+                
 
-                Monitor.Exit(this);
-            }
+            //while (true)
+            //{
+            //    Monitor.Enter(this);
+
+            //    SoebelFilter image1 = new SoebelFilter();
+            //    Bitmap newImage = image1.GetBoundary(originalImage);
+
+            //    Monitor.Exit(this);
+            //}
         }
 
 

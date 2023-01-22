@@ -11,21 +11,39 @@ namespace Assignment05_ProSE
         public Bitmap GetBoundary(Bitmap originalImg)
         {
             Result = new Bitmap(originalImg.Width, originalImg.Height);
+            
 
-            //Red Channel
-            FilterRedChannel(originalImg);
+            if (Monitor.TryEnter(this))
+            {
+                FilterRedChannel(originalImg);
+                
+                if (Monitor.TryEnter(this))
+                {
+                    FilterGreenChaannel(originalImg);
+                    
+                    if (Monitor.TryEnter(this))
+                    {
+                        FilterBlueChaannel(originalImg);
+                        
+                    }
+                }
+            }
+            Monitor.Exit(this);
 
-            //Green Channel
-            FilterGreenChaannel(originalImg);
+            //FilterRedChannel(originalImg);
 
-            //Blue Channel
-            FilterBlueChaannel(originalImg);
+            //FilterGreenChaannel(originalImg);
+            ////Blue Channel
+            //FilterBlueChaannel(originalImg);
+
 
             return Result;
         }
 
         private static void FilterRedChannel(Bitmap img)
+
         {
+            //Monitor.Enter(img);
             for (int x = 1; x < img.Width - 1; x++)
             {
                 for (int y = 1; y < img.Height - 1; y++)
@@ -37,11 +55,16 @@ namespace Assignment05_ProSE
 
                     Color originalImgColor = img.GetPixel(x, y);
                     CheckPixelsMagnitude(magnitude, x, y, originalImgColor);
+                    
+                    
                 }
             }
+            Console.WriteLine("Red done");
+            //Monitor.Exit(img);
         }
         private static void FilterGreenChaannel(Bitmap img)
         {
+            //Monitor.Enter(img);
             for (int x = 1; x < img.Width - 1; x++)
             {
                 for (int y = 1; y < img.Height - 1; y++)
@@ -55,9 +78,12 @@ namespace Assignment05_ProSE
                     CheckPixelsMagnitude(magnitude, x, y, originalImgColor);
                 }
             }
+            Console.WriteLine("Green done");
+            //Monitor.Exit(img);
         }
         private static void FilterBlueChaannel(Bitmap img)
         {
+            //Monitor.Enter(img);
             for (int x = 1; x < img.Width - 1; x++)
             {
                 for (int y = 1; y < img.Height - 1; y++)
@@ -69,11 +95,15 @@ namespace Assignment05_ProSE
 
                     Color originalImgColor = img.GetPixel(x, y);
                     CheckPixelsMagnitude(magnitude, x, y, originalImgColor);
+
                 }
             }
+            Console.WriteLine("Blue done");
+            //Monitor.Exit(img);
         }
         private static void CheckPixelsMagnitude(double magnitude, int x, int y, Color originalImgColor)
         {
+            
             if (Result.GetPixel(x, y) != Color.Black)
             {
                 if (magnitude > Threshold)
@@ -85,6 +115,8 @@ namespace Assignment05_ProSE
                     Result.SetPixel(x, y, Color.Black);
                 }
             }
+            
+
         }
 
     }
