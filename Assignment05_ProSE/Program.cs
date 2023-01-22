@@ -6,14 +6,23 @@ namespace Assignment05_ProSE
     {
         static void Main()
         {
-            string path = "C:\\Users\\Anwender\\Documents\\GitHub\\Assignment05_ProSE\\sampleImages\\image3.jpg";
-            Bitmap originalImage = new Bitmap(path);
+            string path1 = "C:\\Users\\Anwender\\Documents\\GitHub\\Assignment05_ProSE\\sampleImages\\image1.jpg";
+            Bitmap originalImage1 = new Bitmap(path1);
+            string path2 = "C:\\Users\\Anwender\\Documents\\GitHub\\Assignment05_ProSE\\sampleImages\\image2.jpg";
+            Bitmap originalImage2 = new Bitmap(path2);
 
-            SoebelFilter image1 = new SoebelFilter();
-            Bitmap newImage = image1.GetBoundary(originalImage);
 
-            string newPath = "C:\\Users\\Anwender\\Documents\\GitHub\\Assignment05_ProSE\\sampleImages\\image3-result(Threshold15).jpg";
-            newImage.Save(newPath);
+            string resultPath = "C:\\Users\\Anwender\\Documents\\GitHub\\Assignment05_ProSE\\sampleImages\\image3-result(Threshold15).jpg";
+
+
+            //Threading
+
+            ParameterizedThreadStart del = new ParameterizedThreadStart(ImageContainer.ImageProcess);
+
+            Thread t1 = new Thread(del);
+            t1.Start(originalImage1);
+            
+            for()
         }
     }
 }

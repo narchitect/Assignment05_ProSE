@@ -5,10 +5,10 @@ namespace Assignment05_ProSE
 {
     public class SoebelFilter
     {
-        static Bitmap Result;
+        public static Bitmap Result;
         
-        static double Threshold = 15;
-        public Bitmap GetBoundary(Bitmap originalImg)
+        public static double Threshold = 15;
+        static public void GetBoundary(Bitmap originalImg)
         {
             Result = new Bitmap(originalImg.Width, originalImg.Height);
             
@@ -20,8 +20,6 @@ namespace Assignment05_ProSE
 
             //Blue Channel
             FilterBlueChaannel(originalImg);
-            
-            return Result;
         }
 
         private static void FilterRedChannel(Bitmap img)
