@@ -19,9 +19,9 @@ namespace Assignment05_ProSE
                 imageThread.Start();
             }
 
-            foreach(Thread thread in imageThreads)
+            foreach (Thread thread in imageThreads)
             {
-                thread.Join(); 
+                thread.Join();
             }
 
             //Export images

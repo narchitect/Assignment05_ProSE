@@ -23,9 +23,9 @@ namespace Assignment05_ProSE
                 Bitmap aImage = new Bitmap(paths[i]);
                 // set a tag of the image
                 aImage.Tag = string.Format("image{0}", i + 1);
-                // add an bitmap image to bitmap list
+                // add an bitmap image to the list
                 Images.Add(aImage);
-                // add an imageContainer in the imageContainer List
+                // add an imageContainer with original image in the list
                 imageContainers.Add(new ImageContainer(Images[i]));
             }
             return imageContainers;
