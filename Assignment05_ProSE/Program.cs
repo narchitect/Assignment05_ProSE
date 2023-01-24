@@ -6,23 +6,42 @@ namespace Assignment05_ProSE
     {
         static void Main()
         {
-            string path1 = "C:\\Users\\Anwender\\Documents\\GitHub\\Assignment05_ProSE\\sampleImages\\image1.jpg";
-            Bitmap originalImage1 = new Bitmap(path1);
-            string path2 = "C:\\Users\\Anwender\\Documents\\GitHub\\Assignment05_ProSE\\sampleImages\\image2.jpg";
-            Bitmap originalImage2 = new Bitmap(path2);
+            //helper parts
+            List<string> paths = new List<string>();
+            List<Bitmap> originalImgs = new List<Bitmap>();
+            List<ImageContainer> imageContainers = new List<ImageContainer>();
 
+            List<Thread> imageThreads = new List<Thread>();
 
-            string resultPath = "C:\\Users\\Anwender\\Documents\\GitHub\\Assignment05_ProSE\\sampleImages\\image3-result(Threshold15).jpg";
+            for (int i = 0; i < 5; i++)
+            {
+                paths.Add(string.Format("C:\\Users\\Anwender\\Documents\\GitHub\\Assignment05_ProSE\\sampleImages\\image{0}.jpg", i + 1));
+                originalImgs.Add(new Bitmap(paths[i]));
+            }
 
+            foreach(Bitmap originalImg in originalImgs)
+            {
+                imageContainers.Add(new ImageContainer(originalImg));
+            }
 
-            //Threading
+            foreach(ImageContainer imageContainer in imageContainers)
+            {
+                var imageThread = new Thread(new ThreadStart(imageContainer.GetFillteredImage));
+                imageThreads.Add(imageThread);
+                imageThread.Start();
+            }
 
-            ParameterizedThreadStart del = new ParameterizedThreadStart(ImageContainer.ImageProcess);
+            foreach(Thread thread in imageThreads)
+            {
+                thread.Join(); 
+            }
 
-            Thread t1 = new Thread(del);
-            t1.Start(originalImage1);
-            
-            for()
+            //Helper part2
+            for (int i = 0; i < 5; i++)
+            {
+                string resultPath = string.Format("C:\\Users\\Anwender\\Documents\\GitHub\\Assignment05_ProSE\\sampleImages\\image{0}_result.jpg", i + 1);
+                imageContainers[i].Result.Save(resultPath);
+            }
         }
     }
 }
