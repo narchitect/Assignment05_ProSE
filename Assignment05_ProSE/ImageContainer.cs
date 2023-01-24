@@ -20,18 +20,15 @@ namespace Assignment05_ProSE
             
             //Red Channel
             FilterRedChannel();
-            
             //Green Channel
-            FilterGreenChaannel();
-
+            FilterGreenChannel();
             //Blue Channel
-            FilterBlueChaannel();
-
+            FilterBlueChannel();
         }
 
         private void FilterRedChannel()
         {
-            Monitor.Enter(Result);
+            Console.WriteLine("Filltering Red channel... [Current image: {0}]", OriginalImage.Tag);
             for (int x = 1; x < OriginalImage.Width - 1; x++)
             {
                 for (int y = 1; y < OriginalImage.Height - 1; y++)
@@ -43,13 +40,13 @@ namespace Assignment05_ProSE
 
                     Color originalImgColor = OriginalImage.GetPixel(x, y);
                     CheckPixelsMagnitude(magnitude, x, y, originalImgColor);
+
                 }
             }
-            Monitor.Exit(Result); 
         }
-        private void FilterGreenChaannel()
+        private void FilterGreenChannel()
         {
-            Monitor.Enter(Result);
+            Console.WriteLine("Filltering Green channel... [Current image: {0}]", OriginalImage.Tag);
             for (int x = 1; x < OriginalImage.Width - 1; x++)
             {
                 for (int y = 1; y < OriginalImage.Height - 1; y++)
@@ -63,11 +60,10 @@ namespace Assignment05_ProSE
                     CheckPixelsMagnitude(magnitude, x, y, originalImgColor);
                 }
             }
-            Monitor.Exit(Result); 
         }
-        private void FilterBlueChaannel()
+        private void FilterBlueChannel()
         {
-            Monitor.Enter(Result);
+            Console.WriteLine("Filltering Blue channel... [Current image: {0}]", OriginalImage.Tag);
             for (int x = 1; x < OriginalImage.Width - 1; x++)
             {
                 for (int y = 1; y < OriginalImage.Height - 1; y++)
@@ -81,10 +77,11 @@ namespace Assignment05_ProSE
                     CheckPixelsMagnitude(magnitude, x, y, originalImgColor);
                 }
             }
-            Monitor.Exit(Result);
+            
         }
         private void CheckPixelsMagnitude(double magnitude, int x, int y, Color originalImgColor)
         {
+            Monitor.Enter(Result);
             if (Result.GetPixel(x, y) != Color.Black)
             {
                 if (magnitude > Threshold)
@@ -96,6 +93,7 @@ namespace Assignment05_ProSE
                     Result.SetPixel(x, y, Color.Black);
                 }
             }
+            Monitor.Exit(Result); 
         }
     }
 }

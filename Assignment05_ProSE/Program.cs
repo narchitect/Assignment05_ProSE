@@ -16,7 +16,9 @@ namespace Assignment05_ProSE
             for (int i = 0; i < 5; i++)
             {
                 paths.Add(string.Format("C:\\Users\\Anwender\\Documents\\GitHub\\Assignment05_ProSE\\sampleImages\\image{0}.jpg", i + 1));
-                originalImgs.Add(new Bitmap(paths[i]));
+                Bitmap origianlImg = new Bitmap(paths[i]);
+                origianlImg.Tag = string.Format("image{0}",i+1);
+                originalImgs.Add(origianlImg);
             }
 
             foreach(Bitmap originalImg in originalImgs)
@@ -39,7 +41,7 @@ namespace Assignment05_ProSE
             //Helper part2
             for (int i = 0; i < 5; i++)
             {
-                string resultPath = string.Format("C:\\Users\\Anwender\\Documents\\GitHub\\Assignment05_ProSE\\sampleImages\\image{0}_result.jpg", i + 1);
+                string resultPath = string.Format("C:\\Users\\Anwender\\Documents\\GitHub\\Assignment05_ProSE\\sampleImages\\image{0}_resultT2.jpg", i + 1);
                 imageContainers[i].Result.Save(resultPath);
             }
         }
