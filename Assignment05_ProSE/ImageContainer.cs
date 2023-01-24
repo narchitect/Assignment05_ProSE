@@ -7,7 +7,7 @@ namespace Assignment05_ProSE
     {
         public Bitmap OriginalImage { get; set; } 
         public Bitmap Result { get; set; }
-        public double Threshold = 15;
+        public double Threshold = 10;
         
         public ImageContainer(Bitmap originalImg) 
         { 
@@ -29,6 +29,7 @@ namespace Assignment05_ProSE
         private void FilterRedChannel()
         {
             Console.WriteLine("Filltering Red channel... [Current image: {0}]", OriginalImage.Tag);
+            
             for (int x = 1; x < OriginalImage.Width - 1; x++)
             {
                 for (int y = 1; y < OriginalImage.Height - 1; y++)
@@ -81,7 +82,6 @@ namespace Assignment05_ProSE
         }
         private void CheckPixelsMagnitude(double magnitude, int x, int y, Color originalImgColor)
         {
-            Monitor.Enter(Result);
             if (Result.GetPixel(x, y) != Color.Black)
             {
                 if (magnitude > Threshold)
@@ -93,7 +93,6 @@ namespace Assignment05_ProSE
                     Result.SetPixel(x, y, Color.Black);
                 }
             }
-            Monitor.Exit(Result); 
         }
     }
 }

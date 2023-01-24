@@ -6,25 +6,11 @@ namespace Assignment05_ProSE
     {
         static void Main()
         {
-            //helper parts
-            List<string> paths = new List<string>();
-            List<Bitmap> originalImgs = new List<Bitmap>();
-            List<ImageContainer> imageContainers = new List<ImageContainer>();
+            //Import original images
+            List<ImageContainer> imageContainers = Helper.ImportImages();
 
+            //Multi Threading
             List<Thread> imageThreads = new List<Thread>();
-
-            for (int i = 0; i < 5; i++)
-            {
-                paths.Add(string.Format("C:\\Users\\Anwender\\Documents\\GitHub\\Assignment05_ProSE\\sampleImages\\image{0}.jpg", i + 1));
-                Bitmap origianlImg = new Bitmap(paths[i]);
-                origianlImg.Tag = string.Format("image{0}",i+1);
-                originalImgs.Add(origianlImg);
-            }
-
-            foreach(Bitmap originalImg in originalImgs)
-            {
-                imageContainers.Add(new ImageContainer(originalImg));
-            }
 
             foreach(ImageContainer imageContainer in imageContainers)
             {
@@ -38,12 +24,8 @@ namespace Assignment05_ProSE
                 thread.Join(); 
             }
 
-            //Helper part2
-            for (int i = 0; i < 5; i++)
-            {
-                string resultPath = string.Format("C:\\Users\\Anwender\\Documents\\GitHub\\Assignment05_ProSE\\sampleImages\\image{0}_resultT2.jpg", i + 1);
-                imageContainers[i].Result.Save(resultPath);
-            }
+            //Export images
+            Helper.ExportImages(imageContainers);
         }
     }
 }
