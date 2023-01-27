@@ -6,14 +6,26 @@ namespace Assignment05_ProSE
     {
         static void Main()
         {
-            string path = "C:\\Users\\Anwender\\Documents\\GitHub\\Assignment05_ProSE\\sampleImages\\image3.jpg";
-            Bitmap originalImage = new Bitmap(path);
+            //Import original images
+            List<ImageContainer> imageContainers = Helper.ImportImages();
 
-            SoebelFilter image1 = new SoebelFilter();
-            Bitmap newImage = image1.GetBoundary(originalImage);
+            //Multi Threading
+            List<Thread> imageThreads = new List<Thread>();
 
-            string newPath = "C:\\Users\\Anwender\\Documents\\GitHub\\Assignment05_ProSE\\sampleImages\\image3-result(Threshold15).jpg";
-            newImage.Save(newPath);
+            foreach(ImageContainer imageContainer in imageContainers)
+            {
+                var imageThread = new Thread(new ThreadStart(imageContainer.GetFillteredImage));
+                imageThreads.Add(imageThread);
+                imageThread.Start();
+            }
+
+            foreach (Thread thread in imageThreads)
+            {
+                thread.Join();
+            }
+
+            //Export images
+            Helper.ExportImages(imageContainers);
         }
     }
 }
